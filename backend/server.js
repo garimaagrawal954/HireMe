@@ -1,5 +1,16 @@
+import dotenv from 'dotenv';
+dotenv.config();
+
+
+
+
 import app from "./app.js";
 import cloudinary from "cloudinary";
+
+import { dbConnection } from './database/dbConnection.js';
+
+dbConnection(); 
+
 
 cloudinary.v2.config({
   cloud_name: process.env.CLOUDINARY_CLIENT_NAME,

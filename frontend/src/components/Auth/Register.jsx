@@ -8,6 +8,7 @@ import { Link, Navigate } from "react-router-dom";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { Context } from "../../main";
+import api from "../../api";
 
 const Register = () => {
   const [email, setEmail] = useState("");
@@ -21,8 +22,8 @@ const Register = () => {
   const handleRegister = async (e) => {
     e.preventDefault();
     try {
-      const { data } = await axios.post(
-        "http://localhost:4000/api/v1/user/register",
+      const { data } = await api.post(
+        "/user/register",
         { name, phone, email, role, password },
         {
           headers: {
@@ -53,7 +54,7 @@ const Register = () => {
       <section className="authPage">
         <div className="container">
           <div className="header">
-            <img src="/JobZeelogo.png" alt="logo" />
+            <img src="/hireMe_logo_auth.PNG" alt="logo" />
             <h3>Create a new account</h3>
           </div>
           <form>

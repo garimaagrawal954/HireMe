@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { Context } from "../../main";
+import api from "../../api";
 
 const Jobs = () => {
   const [jobs, setJobs] = useState([]);
@@ -9,8 +10,8 @@ const Jobs = () => {
   const navigateTo = useNavigate();
   useEffect(() => {
     try {
-      axios
-        .get("http://localhost:4000/api/v1/job/getall", {
+      api
+        .get("/job/getall", {
           withCredentials: true,
         })
         .then((res) => {

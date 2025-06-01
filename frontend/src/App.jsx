@@ -1,5 +1,6 @@
 import React, { useContext, useEffect } from "react";
 import "./App.css";
+import api from "./api";
 import { Context } from "./main";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Login from "./components/Auth/Login";
@@ -22,12 +23,11 @@ const App = () => {
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const response = await axios.get(
-          "http://localhost:4000/api/v1/user/getuser",
-          {
-            withCredentials: true,
-          }
-        );
+        const response = await api.get("/user/getuser");
+          // {
+          //   withCredentials: true,
+          // }
+        
         setUser(response.data.user);
         setIsAuthorized(true);
       } catch (error) {
